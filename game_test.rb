@@ -1,4 +1,4 @@
-require './marcio/game'
+require './game'
 require 'minitest/autorun'
 
 describe "test" do
@@ -14,4 +14,3 @@ describe "test" do
   end
 
 end
-
