@@ -29,6 +29,11 @@ def show_single_key
   end
 end
 
+def process_scenario
+  elem = $map.pop
+  $map.unshift elem
+end
+
 def screen()
   text = "\e[H\e[2J\n"
   text += "Score: #{$score}\n"
@@ -89,6 +94,7 @@ $score = 0
 loop do
   screen()
   change_car_position
+  process_scenario
   $key = nil
   $score += 10
   sleep 0.3
