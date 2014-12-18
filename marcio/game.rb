@@ -39,9 +39,15 @@ def screen()
   text += "Score: #{$score}\n"
   car_area = "|                    |".split("")
   car_area[$col] = "A"
+  generate_obstacle($map)
   text += $map.join("\n")
   text += "\n" + car_area.join("")
   puts text
+end
+
+def generate_obstacle(map)
+  column = (2..19).to_a.sample
+  map[0][column] = "o"
 end
 
 def change_car_position
