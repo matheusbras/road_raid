@@ -1,41 +1,103 @@
-$width = 80
-$height = 40
-$road = '|'
-$car = '*'
-$car_position = [20,30]
+# encoding: UTF-8
 
-def start_game
-  arr = []
+require 'io/console'
 
-  $height.times do |height|
-    $width.times do |width|
-      arr << [height, width]
-    end
+def read_char
+  STDIN.echo = false
+  STDIN.raw!
+
+  input = STDIN.getc.chr
+  if input == "\e" then
+    input << STDIN.read_nonblock(3) rescue nil
+    input << STDIN.read_nonblock(2) rescue nil
   end
+ensure
+  STDIN.echo = true
+  STDIN.cooked!
 
-  while true do
-    puts "\e[H\e[2J"
+  return input
+end
 
-    char = STDIN.read_nonblock(1) rescue nil
+def show_single_key(read_char)
+  c = read_char
 
-    if char == 'a'
-      $car_position = [$car_position[0] - 1, $car_position[1] - 1]
-    end
-
-    if char == 'd'
-      $car_position = [$car_position[0] + 1, $car_position[1] + 1]
-    end
-
-    arr.each do |map|
-      if map == $car_position
-        print '*'
-      else
-        print '--'
-      end
-    end
-
-    sleep 0.5
+  case c
+  when "\e[C"
+    return :right
+  when "\e[D"
+    return :left
   end
 end
 
-start_game
+def process_scenario
+  elem = $map.pop
+  $map.unshift elem
+end
+
+def screen()
+  text = "\e[H\e[2J\n"
+  text += "Score: #{$score}\n"
+  car_area = "|                    |".split("")
+  car_area[$col] = "A"
+  text += $map.join("\n")
+  text += "\n" + car_area.join("")
+  puts text
+end
+
+def change_car_position
+  $key = show_single_key(read_char)
+  if $key == :right
+    $col += 1
+  elsif $key == :left
+    $col -= 1
+  end
+end
+
+$map = [
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+]
+
+$key = nil
+$col = 12
+$score = 0
+
+def start
+  loop do
+    screen()
+    # change_car_position
+    process_scenario
+    $key = nil
+    $score += 10
+    sleep 0.3
+  end
+end

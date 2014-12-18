@@ -1,0 +1,2 @@
+require "./marcio/game"
+start
