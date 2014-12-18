@@ -93,7 +93,7 @@ $score = 0
 
 loop do
   screen()
-  change_car_position
+  # change_car_position
   process_scenario
   $key = nil
   $score += 10
