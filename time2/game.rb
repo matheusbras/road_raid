@@ -91,13 +91,15 @@ $key = nil
 $col = 12
 $score = 0
 
-def start
-  loop do
-    screen()
+def start(limit = Float::INFINITY)
+  i = 0
+  while i < limit do
+    screen
     # change_car_position
     process_scenario
     $key = nil
     $score += 10
     sleep 0.3
+    i +=1
   end
 end
