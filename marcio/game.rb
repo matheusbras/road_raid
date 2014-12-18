@@ -32,9 +32,10 @@ end
 def screen()
   text = "\e[H\e[2J\n"
   text += "Score: #{$score}\n"
-  car_area = 24.times.map { "=" }
+  car_area = "|                    |".split("")
   car_area[$col] = "A"
-  text += car_area.join("")
+  text += $map.join("\n")
+  text += "\n" + car_area.join("")
   puts text
 end
 
@@ -46,6 +47,40 @@ def change_car_position
     $col -= 1
   end
 end
+
+$map = [
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+  "|                    |",
+  "||                  ||",
+  "|                    |",
+  "|                    |",
+]
 
 $key = nil
 $col = 12
