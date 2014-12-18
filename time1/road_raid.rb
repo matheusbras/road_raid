@@ -1,2 +1,2 @@
-require "./marcio/game"
+require "./game"
 start
