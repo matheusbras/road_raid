@@ -1,11 +1,11 @@
 # encoding: UTF-8
 
 require 'io/console'
- 
+
 def read_char
   STDIN.echo = false
   STDIN.raw!
- 
+
   input = STDIN.getc.chr
   if input == "\e" then
     input << STDIN.read_nonblock(3) rescue nil
@@ -14,13 +14,13 @@ def read_char
 ensure
   STDIN.echo = true
   STDIN.cooked!
- 
+
   return input
 end
 
-def show_single_key
+def show_single_key(read_char)
   c = read_char
- 
+
   case c
   when "\e[C"
     return :right
@@ -45,7 +45,7 @@ def screen()
 end
 
 def change_car_position
-  $key = show_single_key
+  $key = show_single_key(read_char)
   if $key == :right
     $col += 1
   elsif $key == :left
@@ -91,12 +91,13 @@ $key = nil
 $col = 12
 $score = 0
 
-loop do
-  screen()
-  # change_car_position
-  process_scenario
-  $key = nil
-  $score += 10
-  sleep 0.3
+def start
+  loop do
+    screen()
+    # change_car_position
+    process_scenario
+    $key = nil
+    $score += 10
+    sleep 0.3
+  end
 end
-
