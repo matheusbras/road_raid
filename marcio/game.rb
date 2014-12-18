@@ -30,11 +30,12 @@ def show_single_key
 end
 
 def screen()
-  puts "\e[H\e[2J"
-  puts "Score: 10"
-  car_area = 20.times.map { "=" }
+  text = "\e[H\e[2J\n"
+  text += "Score: #{$score}\n"
+  car_area = 24.times.map { "=" }
   car_area[$col] = "A"
-  puts car_area.join("")
+  text += car_area.join("")
+  puts text
 end
 
 def change_car_position
@@ -47,12 +48,14 @@ def change_car_position
 end
 
 $key = nil
-$col = 10 
+$col = 12
+$score = 0
 
 loop do
   screen()
-  $key = nil
   change_car_position
+  $key = nil
+  $score += 10
   sleep 0.3
 end
 
