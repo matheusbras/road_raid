@@ -13,16 +13,14 @@ end
 def update_car_position
   char = read_with_timeout
   case char
-  when "d"
-    @game.move_right
-  when "a"
-    @game.move_left
+    when "d" then @game.move_right
+    when "a" then @game.move_left
   end
 end
 
 def read_with_timeout
   Timeout::timeout(0.5) do
-    input = read_char
+    input = read_key
     if input == 'q'
       exit
     end
@@ -32,7 +30,7 @@ rescue Timeout::Error
   process_frame
 end
 
-def read_char
+def read_key
   begin
     system("stty raw -echo")
     str = STDIN.getc
