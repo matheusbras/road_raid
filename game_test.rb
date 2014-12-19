@@ -16,7 +16,6 @@ describe "The game works" do
   it "move the car" do
     game = Game.new
     game.move_left
-    
     game.screen.must_equal ["     ",
                             "     ",
                             "     ",
@@ -24,11 +23,31 @@ describe "The game works" do
                             " A   "].join("\n")
                             
     game.move_right
-
     game.screen.must_equal ["     ",
                             "     ",
                             "     ",
                             "     ",
-                            "  A  "].join("\n") 
+                            "  A  "].join("\n")
+                            
+    game.move_right
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "     ",
+                            "     ",
+                            "   A "].join("\n")
+                            
+    game.move_right
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "     ",
+                            "     ",
+                            "    A"].join("\n")
+                            
+    game.move_right
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "     ",
+                            "     ",
+                            "    A"].join("\n")
   end
 end
