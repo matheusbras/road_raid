@@ -89,7 +89,7 @@ describe "The game works" do
           "     ",
           "     ",
           "| A |"
-
+  #
   #   game.pass
   #   screen"|   |",
   #         "     ",
@@ -149,7 +149,7 @@ describe "The game works" do
   #
   #
   end
-  #
+
 
   def screen(*lines)
     game.screen.must_equal(lines.join("\n"))

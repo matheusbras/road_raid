@@ -21,10 +21,11 @@ class Game
     @car_position = 2
     @border_position = 0
     @screen = MAP
+    @screen[SCREEN_END] = @car_line.join
   end
 
   def screen
-    @screen[SCREEN_END] = @car_line.join
+    # @screen[SCREEN_END] = @car_line.join
     @screen.join("\n")
   end
 
@@ -32,18 +33,27 @@ class Game
     move do
       @car_position -= MOVEMENT_SPEED
     end
+    @screen[SCREEN_END] = @car_line.join
   end
 
   def move_right
     move do
       @car_position += MOVEMENT_SPEED if @car_position < SCREEN_END
     end
+    @screen[SCREEN_END] = @car_line.join
   end
 
   def pass
     @screen[@border_position-1] = NO_BORDER
     @screen[@border_position] = BORDER
     @border_position += 1
+    if @border_position == 5
+      @car_line[0] = '|'
+      @car_line[4] = '|'
+      @screen[SCREEN_END] = @car_line.join
+    else
+      @screen[SCREEN_END] = @car_line.join
+    end
   end
 
   private
