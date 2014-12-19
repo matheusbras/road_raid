@@ -31,7 +31,7 @@ class Game
 
   def move_left
     move do
-      @car_position -= MOVEMENT_SPEED
+      @car_position -= MOVEMENT_SPEED if @car_position > SCREEN_START
     end
     @screen[SCREEN_END] = @car_line.join
   end

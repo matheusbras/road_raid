@@ -51,6 +51,12 @@ describe "The game works" do
           "     ",
           "    A"
 
+    30.times { game.move_left }
+    screen"     ",
+          "     ",
+          "     ",
+          "     ",
+          "A    "
   end
 
 
