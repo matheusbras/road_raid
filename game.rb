@@ -7,7 +7,7 @@ class Game
   SCREEN_END = 4
   MOVEMENT_SPEED = 1
   CAR = 'A'
-  BACKGROUND = ' '
+  ROAD = ' '
 
   MAP =["     ",
         "     ",
@@ -15,7 +15,7 @@ class Game
         "     "]
 
   def initialize
-    @car_line = [BACKGROUND, BACKGROUND, CAR, BACKGROUND, BACKGROUND]
+    @car_line = [ROAD, ROAD, CAR, ROAD, ROAD]
     @car_position = 2
     @screen = MAP
   end
@@ -26,13 +26,13 @@ class Game
   end
 
   def move_left
-    @car_line[@car_position] = BACKGROUND
+    @car_line[@car_position] = ROAD
     @car_position -= MOVEMENT_SPEED
     @car_line[@car_position] = CAR
   end
 
   def move_right
-    @car_line[@car_position] = BACKGROUND
+    @car_line[@car_position] = ROAD
     @car_position += MOVEMENT_SPEED if @car_position < SCREEN_END
     @car_line[@car_position] = CAR
   end
