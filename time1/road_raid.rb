@@ -1,3 +1,0 @@
-require "./cli"
-
-CLI.start
