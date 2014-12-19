@@ -37,6 +37,9 @@ class Game
     end
   end
 
+  def pass
+  end
+
   private
 
     def move(&block)
