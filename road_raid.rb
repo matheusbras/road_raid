@@ -45,7 +45,6 @@ end
 def process_frame
   @game.pass
   puts @game.screen
-  @game.score += 10
   update_car_position
   sleep 0.3
 end
