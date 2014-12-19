@@ -8,6 +8,8 @@ class Game
   MOVEMENT_SPEED = 1
   CAR = 'A'
   ROAD = ' '
+  BORDER = "|   |"
+  NO_BORDER = "     "
 
   MAP =["     ",
         "     ",
@@ -17,6 +19,7 @@ class Game
   def initialize
     @car_line = [ROAD, ROAD, CAR, ROAD, ROAD]
     @car_position = 2
+    @border_position = 0
     @screen = MAP
   end
 
@@ -38,6 +41,9 @@ class Game
   end
 
   def pass
+    @screen[@border_position-1] = NO_BORDER
+    @screen[@border_position] = BORDER
+    @border_position += 1
   end
 
   private
