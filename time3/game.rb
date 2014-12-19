@@ -1,14 +1,18 @@
 # encoding: UTF-8
+require 'io/console'
+require 'timeout'
 require './car'
 
 def read_char
-  begin
-    system("stty raw -echo")
-    str = STDIN.getc
-  ensure
-    system("stty -raw echo")
+  Timeout::timeout(0.5) do
+    input = STDIN.getch
+    if input == 'q'
+      exit
+    end
+    input
   end
-  str.chr
+  rescue Timeout::Error
+    start
 end
 
 def process_scenario
@@ -20,7 +24,7 @@ def screen()
   text = "\e[H\e[2J\n"
   text += "Score: #{$score}\n"
   car_area = "|                    |".split("")
-  car_area[@car.position] = @car.image
+  car_area[@car.position] = "A"
   text += $map.join("\n")
   text += "\n" + car_area.join("")
   puts text
@@ -65,19 +69,17 @@ $map = [
 ]
 
 $score = 0
+@car = Car.new
 
-def load_car
-  @car = Car.new
-end
-
-def start
-  load_car
+def start(limit = Float::INFINITY)
   
-  loop do
+  i = 0
+  while i < limit do
     screen()
     process_scenario
     change_car_position
     $score += 10
     sleep 0.3
+    i +=1
   end
 end
