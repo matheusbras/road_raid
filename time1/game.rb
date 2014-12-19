@@ -1,95 +1,70 @@
 # encoding: UTF-8
 
-def read_char
-  begin
-    system("stty raw -echo")
-    str = STDIN.getc
-  ensure
-    system("stty -raw echo")
+class Game
+  attr_reader :map
+  attr_accessor :score, :car_position
+
+  def initialize(params = {})
+    @score = params.fetch(:score, 0)
+    @car_position = params.fetch(:car_position, 12)
+    @map = [
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "||                  ||",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "||                  ||",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "||                  ||",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "||                  ||",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "||                  ||",
+      "|                    |",
+      "|                    |",
+      "|                    |",
+      "||                  ||",
+      "|                    |",
+      "|                    |",
+    ]
   end
-  str.chr
-end
 
-def show_single_key(read_char) 
-  c = read_char
-
-  case c
-  when "d"
-    return :right
-  when "a"
-    return :left
+  def move_car_to(position)
+    case position    when :right
+      self.car_position += 1
+    when :left
+      self.car_position -= 1
+    end
   end
-end
 
-def process_scenario
-  elem = $map.pop
-  $map.unshift elem
-end
-
-def screen()
-  text = "\e[H\e[2J\n"
-  text += "Score: #{$score}\n"
-  car_area = "|                    |".split("")
-  car_area[$col] = "A"
-  text += $map.join("\n")
-  text += "\n" + car_area.join("")
-  puts text
-end
-
-def change_car_position
-  $key = show_single_key(read_char)
-  if $key == :right && $col < 22
-    $col += 1
-  elsif $key == :left && $col > 0
-    $col -= 1
+  def process_scenario
+    elem = self.map.pop
+    self.map.unshift elem
   end
-end
 
-$map = [
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-]
-
-$key = nil
-$col = 12
-$score = 0
-
-def start
-  loop do
-    screen()
+  def render
     process_scenario
-    change_car_position
-    $key = nil
-    $score += 10
-    sleep 0.3
+    text = "\e[H\e[2J\n"
+    text += "Score: #{self.score}\n"
+    car_area = "|                    |".split("")
+    car_area[self.car_position] = "A"
+    text += self.map.join("\n")
+    text += "\n" + car_area.join("")
+    text
   end
 end
+
+

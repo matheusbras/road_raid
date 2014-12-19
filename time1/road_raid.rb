@@ -1,2 +1,3 @@
-require "./game"
-start
+require "./cli"
+
+CLI.start
