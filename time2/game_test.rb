@@ -40,10 +40,8 @@ Score: 0
 |                    |
 |           A        |
 "
-     out, err = capture_io do
-        start(1)
-      end
-      out.must_equal game_result
+      game = Game.new('d').call
+      game.must_equal game_result
     end
   end
 end

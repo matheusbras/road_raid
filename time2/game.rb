@@ -4,24 +4,12 @@ require 'timeout'
 
 class Game
 
-  def initialize
+  def initialize(key)
+    $key = key
   end
 
-  # Main
-  def read_char
-    Timeout::timeout(0.5) do
-      input = STDIN.getch
-      if input == 'q'
-        exit
-      end
-      input
-    end
-    rescue Timeout::Error
-      start
-  end
-
-  def show_single_key(read_char)
-    c = read_char
+  def show_single_key
+    c = $key
 
     case c
     when "d"
@@ -43,11 +31,11 @@ class Game
     car_area[$col] = "A"
     text += $map.join("\n")
     text += "\n" + car_area.join("")
-    puts text
+    text
   end
 
   def change_car_position
-    $key = show_single_key(read_char)
+    $key = show_single_key
     if $key == :right && $col < 22
       $col += 1
     elsif $key == :left && $col > 0
@@ -101,16 +89,6 @@ class Game
   $key = nil
   $col = 12
   $score = 0
-
-  # Main
-  def start(limit = Float::INFINITY)
-    i = 0
-    while i < limit do
-      print call
-      sleep 0.3
-      i +=1
-    end
-  end
 end
 
 

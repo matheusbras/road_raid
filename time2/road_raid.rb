@@ -1,2 +1,3 @@
 require "./time2/game"
-Game.new.start
+require "./time2/main"
+Main.new.call
