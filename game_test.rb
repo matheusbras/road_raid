@@ -103,6 +103,4 @@ describe "The game works" do
                             "  A  "].join("\n")
                             
   end
-
-  
 end
