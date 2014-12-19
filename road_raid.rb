@@ -32,12 +32,8 @@ end
 
 def read_key
   begin
-    # system("stty raw -echo")
-    # clear
     str = STDIN.getch
   ensure
-    # clear
-    # system("stty -raw echo")
   end
   str.chr
 end
