@@ -51,6 +51,9 @@ class Game
       @car_line[0] = '|'
       @car_line[4] = '|'
       @screen[SCREEN_END] = @car_line.join
+      @car_line[0] = ' '
+      @car_line[4] = ' '
+      @border_position = 0
     else
       @screen[SCREEN_END] = @car_line.join
     end

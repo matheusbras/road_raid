@@ -89,27 +89,27 @@ describe "The game works" do
           "     ",
           "     ",
           "| A |"
-  #
-  #   game.pass
-  #   screen"|   |",
-  #         "     ",
-  #         "     ",
-  #         "     ",
-  #         "  A# "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "|   |",
-  #         "     ",
-  #         "     ",
-  #         "  A  "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "     ",
-  #         "|   |",
-  #         "     ",
-  #         "  A  "
+
+    game.pass
+    screen"|   |",
+          "     ",
+          "     ",
+          "     ",
+          "  A  "
+
+    game.pass
+    screen"     ",
+          "|   |",
+          "     ",
+          "     ",
+          "  A  "
+
+    game.pass
+    screen"     ",
+          "     ",
+          "|   |",
+          "     ",
+          "  A  "
   #
   #
   #   game.pass
