@@ -58,49 +58,49 @@ describe "The game works" do
                             "     ",
                             "     ",
                             "     ",
-                            "  A  "]
+                            "  A  "].join("\n")
 
     game.pass
     game.screen.must_equal ["     ",
                             "|   |",
                             "     ",
                             "     ",
-                            "  A  "]
+                            "  A  "].join("\n")
                             
     game.pass
     game.screen.must_equal ["     ",
                             "     ",
                             "|   |",
                             "     ",
-                            "  A  "]
+                            "  A  "].join("\n")
                             
     game.pass
     game.screen.must_equal ["     ",
                             "     ",
                             "     ",
                             "|   |",
-                            "  A  "]
+                            "  A  "].join("\n")
                             
     game.pass
     game.screen.must_equal ["     ",
                             "     ",
                             "     ",
                             "     ",
-                            "| A |"]
+                            "| A |"].join("\n")
                             
     game.pass
     game.screen.must_equal ["     ",
                             "     ",
                             "     ",
                             "     ",
-                            "  A  "]
+                            "  A  "].join("\n")
                             
     game.pass
     game.screen.must_equal ["|   |",
                             "     ",
                             "     ",
                             "     ",
-                            "  A  "]
+                            "  A  "].join("\n")
                             
   end
 
