@@ -48,6 +48,7 @@ end
 
 def clear
   80.times { puts }
+  puts 'Road Raid 4TW'
 end
 
 start
