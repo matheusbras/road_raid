@@ -1,2 +1,2 @@
 require "./time2/game"
-start
+Game.new.start
