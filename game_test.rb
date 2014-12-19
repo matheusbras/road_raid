@@ -144,7 +144,7 @@ describe "The game works" do
           "     ",
           "     ",
           "     ",
-          "    "
+          " *#* "
 
   
   end
