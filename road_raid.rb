@@ -43,7 +43,7 @@ def read_char
 end
 
 def process_frame
-  @game.pass
+  # @game.pass
   puts @game.screen
   update_car_position
   sleep 0.3
