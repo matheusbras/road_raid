@@ -61,39 +61,48 @@ describe "The game works" do
                             "  A  "]
 
     game.pass
-    game.screen.must_equal ["|   |",
+    game.screen.must_equal ["     ",
                             "|   |",
                             "     ",
                             "     ",
                             "  A  "]
                             
     game.pass
-    game.screen.must_equal ["|   |",
-                            "|   |",
+    game.screen.must_equal ["     ",
+                            "     ",
                             "|   |",
                             "     ",
                             "  A  "]
                             
     game.pass
-    game.screen.must_equal ["|   |",
-                            "|   |",
-                            "|   |",
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "     ",
                             "|   |",
                             "  A  "]
                             
     game.pass
-    game.screen.must_equal ["|   |",
-                            "|   |",
-                            "|   |",
-                            "|   |",
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "     ",
+                            "     ",
                             "| A |"]
                             
     game.pass
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "     ",
+                            "     ",
+                            "  A  "]
+                            
+    game.pass
     game.screen.must_equal ["|   |",
-                            "|   |",
-                            "|   |",
-                            "|   |",
-                            "| A |"]
+                            "     ",
+                            "     ",
+                            "     ",
+                            "  A  "]
+                            
   end
+
   
 end
