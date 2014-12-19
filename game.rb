@@ -1,85 +1,94 @@
 # encoding: UTF-8
 require 'io/console'
 require 'timeout'
-require './car'
 
-def read_char
-  Timeout::timeout(0.5) do
-    input = STDIN.getch
-    if input == 'q'
-      exit
-    end
-    input
+class Game
+
+  def initialize(key)
+    $key = key
   end
-  rescue Timeout::Error
-    start
-end
 
-def process_scenario
-  elem = $map.pop
-  $map.unshift elem
-end
+  def show_single_key
+    c = $key
 
-def screen()
-  text = "\e[H\e[2J\n"
-  text += "Score: #{$score}\n"
-  car_area = "|                    |".split("")
-  car_area[@car.position] = "A"
-  text += $map.join("\n")
-  text += "\n" + car_area.join("")
-  puts text
-end
+    case c
+    when "d"
+      return :right
+    when "a"
+      return :left
+    end
+  end
 
-def change_car_position
-  @car.action(read_char)
-end
+  def process_scenario
+    elem = $map.pop
+    $map.unshift elem
+  end
 
-$map = [
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-  "|                    |",
-  "||                  ||",
-  "|                    |",
-  "|                    |",
-]
+  def screen()
+    text = "\e[H\e[2J\n"
+    text += "Score: #{$score}\n"
+    car_area = "|                    |".split("")
+    car_area[$col] = "A"
+    text += $map.join("\n")
+    text += "\n" + car_area.join("")
+    text
+  end
 
-$score = 0
-@car = Car.new
+  def change_car_position
+    $key = show_single_key
+    if $key == :right && $col < 22
+      $col += 1
+    elsif $key == :left && $col > 0
+      $col -= 1
+    end
+  end
 
-def start(limit = Float::INFINITY)
-  
-  i = 0
-  while i < limit do
-    screen()
+  def call
+    current_screen = screen()
     process_scenario
     change_car_position
+    $key = nil
     $score += 10
-    sleep 0.3
-    i +=1
+    current_screen
   end
+
+  $map = [
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "||                  ||",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "||                  ||",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "||                  ||",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "||                  ||",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "||                  ||",
+    "|                    |",
+    "|                    |",
+    "|                    |",
+    "||                  ||",
+    "|                    |",
+    "|                    |",
+  ]
+
+  $key = nil
+  $col = 12
+  $score = 0
 end
+
+
