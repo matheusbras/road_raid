@@ -44,7 +44,7 @@ end
 
 def process_frame
   clear
-  # @game.pass
+  @game.pass
   puts @game.screen
   update_car_position
   # sleep 0.3
