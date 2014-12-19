@@ -50,55 +50,64 @@ describe "The game works" do
                             "     ",
                             "    A"].join("\n")
   end
-  # it "pass the background" do
-  #   game = Game.new
-  #   game.pass
-  #   game.screen.must_equal ["|   |",
-  #                           "     ",
-  #                           "     ",
-  #                           "     ",
-  #                           "  A  "].join("\n")
-  #
-  #   game.pass
-  #   game.screen.must_equal ["     ",
-  #                           "|   |",
-  #                           "     ",
-  #                           "     ",
-  #                           "  A  "].join("\n")
-  #
-  #   game.pass
-  #   game.screen.must_equal ["     ",
-  #                           "     ",
-  #                           "|   |",
-  #                           "     ",
-  #                           "  A  "].join("\n")
-  #
-  #   game.pass
-  #   game.screen.must_equal ["     ",
-  #                           "     ",
-  #                           "     ",
-  #                           "|   |",
-  #                           "  A  "].join("\n")
-  #
-  #   game.pass
-  #   game.screen.must_equal ["     ",
-  #                           "     ",
-  #                           "     ",
-  #                           "     ",
-  #                           "| A |"].join("\n")
-  #
-  #   game.pass
-  #   game.screen.must_equal ["     ",
-  #                           "     ",
-  #                           "     ",
-  #                           "     ",
-  #                           "  A  "].join("\n")
-  #
-  #   game.pass
-  #   game.screen.must_equal ["|   |",
-  #                           "     ",
-  #                           "     ",
-  #                           "     ",
-  #                           "  A  "].join("\n")
-  #
+  
+  it "pass the background" do
+    game = Game.new
+    game.pass
+    game.screen.must_equal ["|   |",
+                            "     ",
+                            "     ",
+                            "     ",
+                            "  A  "].join("\n")
+  
+    game.pass
+    game.screen.must_equal ["   # ",
+                            "|   |",
+                            "     ",
+                            "     ",
+                            "  A  "].join("\n")
+  
+    game.pass
+    game.screen.must_equal ["     ",
+                            "   # ",
+                            "|   |",
+                            "     ",
+                            "  A  "].join("\n")
+  
+    game.pass
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "   # ",
+                            "|   |",
+                            "  A  "].join("\n")
+  
+    game.pass
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "     ",
+                            "   # ",
+                            "| A |"].join("\n")
+  
+    game.pass
+    game.screen.must_equal ["|   |",
+                            "     ",
+                            "     ",
+                            "     ",
+                            "  A# "].join("\n")
+
+    game.pass
+    game.screen.must_equal ["     ",
+                            "|   |",
+                            "     ",
+                            "     ",
+                            "  A  "].join("\n")
+  
+    game.pass
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "|   |",
+                            "     ",
+                            "  A  "].join("\n")
+  
+  end
 end
