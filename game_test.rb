@@ -2,112 +2,121 @@ require './game'
 require 'minitest/autorun'
 
 describe "The game works" do
+  before do
+    @game = Game.new
+  end
+
 
   it "initial state" do
-    game = Game.new
-
-    game.screen.must_equal ["     ",
-                            "     ",
-                            "     ",
-                            "     ",
-                            "  A  "].join("\n")
+    screen "     ",
+           "     ",
+           "     ",
+           "     ",
+           "  A  "
   end
 
   it "move the car" do
-    game = Game.new
     game.move_left
-    game.screen.must_equal ["     ",
-                            "     ",
-                            "     ",
-                            "     ",
-                            " A   "].join("\n")
-
+    screen "     ",
+           "     ",
+           "     ",
+           "     ",
+           " A   "
+  
     game.move_right
-    game.screen.must_equal ["     ",
-                            "     ",
-                            "     ",
-                            "     ",
-                            "  A  "].join("\n")
-
+    screen"     ",
+          "     ",
+          "     ",
+          "     ",
+          "  A  "
+  
     game.move_right
-    game.screen.must_equal ["     ",
-                            "     ",
-                            "     ",
-                            "     ",
-                            "   A "].join("\n")
-
+    screen"     ",
+          "     ",
+          "     ",
+          "     ",
+          "   A "
+  
     game.move_right
-    game.screen.must_equal ["     ",
-                            "     ",
-                            "     ",
-                            "     ",
-                            "    A"].join("\n")
-
+    screen"     ",
+          "     ",
+          "     ",
+          "     ",
+          "    A"
+  
     game.move_right
-    game.screen.must_equal ["     ",
-                            "     ",
-                            "     ",
-                            "     ",
-                            "    A"].join("\n")
+    screen"     ",
+          "     ",
+          "     ",
+          "     ",
+          "    A"
+  
   end
   
   it "pass the background" do
-    game = Game.new
     game.pass
-    game.screen.must_equal ["|   |",
-                            "     ",
-                            "     ",
-                            "     ",
-                            "  A  "].join("\n")
+    screen"|   |",
+          "     ",
+          "     ",
+          "     ",
+          "  A  "
   
     game.pass
-    game.screen.must_equal ["   # ",
-                            "|   |",
-                            "     ",
-                            "     ",
-                            "  A  "].join("\n")
+    screen"   # ",
+          "|   |",
+          "     ",
+          "     ",
+          "  A  "
   
     game.pass
-    game.screen.must_equal ["     ",
-                            "   # ",
-                            "|   |",
-                            "     ",
-                            "  A  "].join("\n")
+    screen"     ",
+          "   # ",
+          "|   |",
+          "     ",
+          "  A  "
   
     game.pass
-    game.screen.must_equal ["     ",
-                            "     ",
-                            "   # ",
-                            "|   |",
-                            "  A  "].join("\n")
+    screen"     ",
+          "     ",
+          "   # ",
+          "|   |",
+          "  A  "
   
     game.pass
-    game.screen.must_equal ["     ",
-                            "     ",
-                            "     ",
-                            "   # ",
-                            "| A |"].join("\n")
+    screen"     ",
+          "     ",
+          "     ",
+          "   # ",
+          "| A |"
   
     game.pass
-    game.screen.must_equal ["|   |",
-                            "     ",
-                            "     ",
-                            "     ",
-                            "  A# "].join("\n")
+    screen"|   |",
+          "     ",
+          "     ",
+          "     ",
+          "  A# "
 
     game.pass
-    game.screen.must_equal ["     ",
-                            "|   |",
-                            "     ",
-                            "     ",
-                            "  A  "].join("\n")
+    screen"     ",
+          "|   |",
+          "     ",
+          "     ",
+          "  A  "
   
     game.pass
-    game.screen.must_equal ["     ",
-                            "     ",
-                            "|   |",
-                            "     ",
-                            "  A  "].join("\n")
+    screen"     ",
+          "     ",
+          "|   |",
+          "     ",
+          "  A  "
   
+  end
+
+  def screen(*lines)
+    game.screen.must_equal(lines).join("\n")
+  end
+
+  def game 
+    @game
   end
 end
