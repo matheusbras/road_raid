@@ -26,16 +26,24 @@ class Game
   end
 
   def move_left
-    @car_line[@car_position] = ROAD
-    @car_position -= MOVEMENT_SPEED
-    @car_line[@car_position] = CAR
+    move do
+      @car_position -= MOVEMENT_SPEED
+    end
   end
 
   def move_right
-    @car_line[@car_position] = ROAD
-    @car_position += MOVEMENT_SPEED if @car_position < SCREEN_END
-    @car_line[@car_position] = CAR
+    move do
+      @car_position += MOVEMENT_SPEED if @car_position < SCREEN_END
+    end
   end
+
+  private
+
+    def move(&block)
+      @car_line[@car_position] = ROAD
+      block.call
+      @car_line[@car_position] = CAR
+    end
 end
 
 
