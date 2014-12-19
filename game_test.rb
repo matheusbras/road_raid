@@ -42,21 +42,21 @@ describe "The game works" do
           "     ",
           "     ",
           "     ",
-          "    A"
+          "   A "
 
     game.move_right
     screen"     ",
           "     ",
           "     ",
           "     ",
-          "    A"
+          "   A "
 
     30.times { game.move_left }
     screen"     ",
           "     ",
           "     ",
           "     ",
-          "A    "
+          " A   "
   end
 
 

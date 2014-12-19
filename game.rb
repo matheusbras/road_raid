@@ -31,14 +31,14 @@ class Game
 
   def move_left
     move do
-      @car_position -= MOVEMENT_SPEED if @car_position > SCREEN_START
+      @car_position -= MOVEMENT_SPEED if @car_position > SCREEN_START + 1
     end
     @screen[SCREEN_END] = @car_line.join
   end
 
   def move_right
     move do
-      @car_position += MOVEMENT_SPEED if @car_position < SCREEN_END
+      @car_position += MOVEMENT_SPEED if @car_position < SCREEN_END - 1
     end
     @screen[SCREEN_END] = @car_line.join
   end
