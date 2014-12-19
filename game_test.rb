@@ -54,107 +54,111 @@ describe "The game works" do
   end
   
 
-  # it "pass the background" do
-  #   game.pass
-  #   screen"|   |",
-  #         "     ",
-  #         "     ",
-  #         "     ",
-  #         "  A  "
-  #
-  #   game.pass
-  #   screen"   # ",
-  #         "|   |",
-  #         "     ",
-  #         "     ",
-  #         "  A  "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "   # ",
-  #         "|   |",
-  #         "     ",
-  #         "  A  "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "     ",
-  #         "   # ",
-  #         "|   |",
-  #         "  A  "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "     ",
-  #         "     ",
-  #         "   # ",
-  #         "| A |"
-  #
-  #   game.pass
-  #   screen"|   |",
-  #         "     ",
-  #         "     ",
-  #         "     ",
-  #         "  A# "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "|   |",
-  #         "     ",
-  #         "     ",
-  #         "  A  "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "     ",
-  #         "|   |",
-  #         "     ",
-  #         "  A  "
-  #
-  #
-  #   game.pass
-  #   screen"  #  ",
-  #         "     ",
-  #         "|   |",
-  #         "     ",
-  #         "  A  "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "  #  ",
-  #         "     ",
-  #         "|   |",
-  #         "  A  "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "     ",
-  #         "  #  ",
-  #         "     ",
-  #         "| A |"
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "     ",
-  #         "     ",
-  #         "  #  ",
-  #         "  A  "
-  #
-  #   game.pass
-  #   screen"     ",
-  #         "     ",
-  #         "     ",
-  #         "     ",
-  #         " *#* "
-  #
-  #
-  # end
-  #
+  it "pass the background" do
+    pass
+    screen"|   |",
+          "     ",
+          "     ",
+          "     ",
+          "  A  "
+  
+    pass
+    screen"   # ",
+          "|   |",
+          "     ",
+          "     ",
+          "  A  "
+  
+    pass
+    screen"     ",
+          "   # ",
+          "|   |",
+          "     ",
+          "  A  "
+  
+    pass
+    screen"     ",
+          "     ",
+          "   # ",
+          "|   |",
+          "  A  "
+  
+    pass
+    screen"     ",
+          "     ",
+          "     ",
+          "   # ",
+          "| A |"
+  
+    pass
+    screen"|   |",
+          "     ",
+          "     ",
+          "     ",
+          "  A# "
+  
+    pass
+    screen"     ",
+          "|   |",
+          "     ",
+          "     ",
+          "  A  "
+  
+    pass
+    screen"     ",
+          "     ",
+          "|   |",
+          "     ",
+          "  A  "
+  
+  
+    pass
+    screen"  #  ",
+          "     ",
+          "|   |",
+          "     ",
+          "  A  "
+  
+    pass
+    screen"     ",
+          "  #  ",
+          "     ",
+          "|   |",
+          "  A  "
+  
+    pass
+    screen"     ",
+          "     ",
+          "  #  ",
+          "     ",
+          "| A |"
+  
+    pass
+    screen"     ",
+          "     ",
+          "     ",
+          "  #  ",
+          "  A  "
+  
+    pass
+    screen"     ",
+          "     ",
+          "     ",
+          "     ",
+          " *#* "
+  
+  
+  end
+  
   def screen(*lines)
     game.screen.must_equal(lines.join("\n"))
   end
 
   def game
     @game
+  end
+
+  def pass
+    game.pass
   end
 end
