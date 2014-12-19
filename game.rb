@@ -11,22 +11,25 @@ class Game
 
   def initialize
     @car = [' ', ' ', 'A', ' ', ' ']
+    @car_position = 2
+    @screen = MAP
   end
 
   def screen
-    screen = MAP
-    screen[4] = @car.join
-    screen.join("\n")
+    @screen[4] = @car.join
+    @screen.join("\n")
   end
 
   def move_left
-    @car.delete_at(0)
-    @car << ' '
+    @car[@car_position] = ' '
+    @car_position -= 1
+    @car[@car_position] = 'A'
   end
 
   def move_right
-    @car.delete_at(4)
-    @car[0] = ' '
+    @car[@car_position] = ' '
+    @car_position += 1
+    @car[@car_position] = 'A'
   end
 end
 
