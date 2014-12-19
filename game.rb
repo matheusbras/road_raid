@@ -7,6 +7,7 @@ class Game
   SCREEN_END = 4
   MOVEMENT_SPEED = 1
   CAR = 'A'
+  BACKGROUND = ' '
 
   MAP =["     ",
         "     ",
@@ -14,26 +15,26 @@ class Game
         "     "]
 
   def initialize
-    @car = [' ', ' ', CAR, ' ', ' ']
+    @car_line = [BACKGROUND, BACKGROUND, CAR, BACKGROUND, BACKGROUND]
     @car_position = 2
     @screen = MAP
   end
 
   def screen
-    @screen[SCREEN_END] = @car.join
+    @screen[SCREEN_END] = @car_line.join
     @screen.join("\n")
   end
 
   def move_left
-    @car[@car_position] = ' '
+    @car_line[@car_position] = BACKGROUND
     @car_position -= MOVEMENT_SPEED
-    @car[@car_position] = CAR
+    @car_line[@car_position] = CAR
   end
 
   def move_right
-    @car[@car_position] = ' '
+    @car_line[@car_position] = BACKGROUND
     @car_position += MOVEMENT_SPEED if @car_position < SCREEN_END
-    @car[@car_position] = CAR
+    @car_line[@car_position] = CAR
   end
 end
 
