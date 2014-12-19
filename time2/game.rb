@@ -1,30 +1,26 @@
 # encoding: UTF-8
-
 require 'io/console'
+require 'timeout'
 
 def read_char
-  STDIN.echo = false
-  STDIN.raw!
-
-  input = STDIN.getc.chr
-  if input == "\e" then
-    input << STDIN.read_nonblock(3) rescue nil
-    input << STDIN.read_nonblock(2) rescue nil
+  Timeout::timeout(0.5) do
+    input = STDIN.getch
+    if input == 'q'
+      exit
+    end
+    input
   end
-ensure
-  STDIN.echo = true
-  STDIN.cooked!
-
-  return input
+  rescue Timeout::Error
+    start
 end
 
 def show_single_key(read_char)
   c = read_char
 
   case c
-  when "\e[C"
+  when "d"
     return :right
-  when "\e[D"
+  when "a"
     return :left
   end
 end
@@ -46,9 +42,9 @@ end
 
 def change_car_position
   $key = show_single_key(read_char)
-  if $key == :right
+  if $key == :right && $col < 22
     $col += 1
-  elsif $key == :left
+  elsif $key == :left && $col > 0
     $col -= 1
   end
 end
@@ -94,9 +90,9 @@ $score = 0
 def start(limit = Float::INFINITY)
   i = 0
   while i < limit do
-    screen
-    # change_car_position
+    screen()
     process_scenario
+    change_car_position
     $key = nil
     $score += 10
     sleep 0.3
