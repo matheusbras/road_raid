@@ -28,7 +28,7 @@ class Game
 
   def move_right
     @car[@car_position] = ' '
-    @car_position += 1
+    @car_position += 1 if @car_position < 4
     @car[@car_position] = 'A'
   end
 end

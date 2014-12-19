@@ -43,14 +43,13 @@ describe "The game works" do
                             "     ",
                             "    A"].join("\n")
 
-  #   game.move_right
-  #   game.screen.must_equal ["     ",
-  #                           "     ",
-  #                           "     ",
-  #                           "     ",
-  #                           "    A"].join("\n")
-  # end
-  #
+    game.move_right
+    game.screen.must_equal ["     ",
+                            "     ",
+                            "     ",
+                            "     ",
+                            "    A"].join("\n")
+  end
   # it "pass the background" do
   #   game = Game.new
   #   game.pass
@@ -102,5 +101,4 @@ describe "The game works" do
   #                           "     ",
   #                           "  A  "].join("\n")
   #
-  end
 end
