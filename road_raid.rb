@@ -32,19 +32,26 @@ end
 
 def read_key
   begin
-    system("stty raw -echo")
-    str = STDIN.getc
+    # system("stty raw -echo")
+    # clear
+    str = STDIN.getch
   ensure
-    system("stty -raw echo")
+    # clear
+    # system("stty -raw echo")
   end
   str.chr
 end
 
 def process_frame
+  clear
   # @game.pass
   puts @game.screen
   update_car_position
-  sleep 0.3
+  # sleep 0.3
+end
+
+def clear
+  80.times { puts }
 end
 
 start
