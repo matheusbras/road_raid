@@ -50,8 +50,9 @@ describe "The game works" do
           "     ",
           "     ",
           "    A"
-
+  
   end
+  
 
   # it "pass the background" do
   #   game.pass
