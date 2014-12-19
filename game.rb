@@ -4,19 +4,27 @@ require 'timeout'
 
 class Game
 
-  def initialize(key)
-    $key = key
+  def initialize
+    key = key
+    col = 12
+    score = 0
   end
 
   def show_single_key
-    c = $key
-
-    case c
-    when "d"
-      return :right
-    when "a"
-      return :left
+    case key
+    when 'd'
+      right
+    when 'a'
+      left
     end
+  end
+
+  def left
+    :left
+  end
+
+  def right
+    :right
   end
 
   def process_scenario
@@ -24,22 +32,20 @@ class Game
     $map.unshift elem
   end
 
-  def screen()
-    text = "\e[H\e[2J\n"
-    text += "Score: #{$score}\n"
-    car_area = "|                    |".split("")
-    car_area[$col] = "A"
-    text += $map.join("\n")
-    text += "\n" + car_area.join("")
-    text
+  def screen
+    ["     ",
+     "     ",
+     "     ",
+     "     ",
+     "  A  "].join("\n")
   end
 
   def change_car_position
-    $key = show_single_key
-    if $key == :right && $col < 22
-      $col += 1
-    elsif $key == :left && $col > 0
-      $col -= 1
+    key = show_single_key
+    if key == :right && col < 22
+      col += 1
+    elsif key == :left && col > 0
+      col -= 1
     end
   end
 
@@ -47,8 +53,8 @@ class Game
     current_screen = screen()
     process_scenario
     change_car_position
-    $key = nil
-    $score += 10
+    key = nil
+    score += 10
     current_screen
   end
 
@@ -86,9 +92,10 @@ class Game
     "|                    |",
   ]
 
-  $key = nil
-  $col = 12
-  $score = 0
+
+  private
+
+    attr_reader :key, :col, :score
 end
 
 

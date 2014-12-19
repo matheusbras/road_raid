@@ -1,16 +1,16 @@
-require './time2/game'
+require './game'
 require 'minitest/autorun'
 
 describe "The game works" do
 
   it "initial state" do
     game = Game.new
-    
+
     game.screen.must_equal ["     ",
                             "     ",
                             "     ",
                             "     ",
-                            "  A  "].join("\n") 
+                            "  A  "].join("\n")
   end
   
   it "move the car" do
