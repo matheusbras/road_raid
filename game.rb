@@ -4,38 +4,29 @@ require 'timeout'
 
 class Game
 
+  MAP =["     ",
+        "     ",
+        "     ",
+        "     "]
+
   def initialize
+    @car = [' ', ' ', 'A', ' ', ' ']
   end
 
   def screen
-    if @left
-      ["     ",
-       "     ",
-       "     ",
-       "     ",
-       " A   "].join("\n")
-    elsif @right
-      ["     ",
-       "     ",
-       "     ",
-       "     ",
-       "  A  "].join("\n")
-    else
-      ["     ",
-       "     ",
-       "     ",
-       "     ",
-       "  A  "].join("\n")
-    end
+    screen = MAP
+    screen[4] = @car.join
+    screen.join("\n")
   end
 
   def move_left
-    @left = true
+    @car.delete_at(0)
+    @car << ' '
   end
 
   def move_right
-    @left = false
-    @right = true
+    @car.delete_at(4)
+    @car[0] = ' '
   end
 end
 
